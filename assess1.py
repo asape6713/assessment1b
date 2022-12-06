@@ -32,7 +32,7 @@ while True: ## REPL - Read Execute Program Loop
     cmd = input("Command: ")
     if cmd == "list":
         print(read_contacts(conn))
-    elif cmd == "insert":
+    elif cmd == "insert": # insert 
         id = input("  id: ")
         first_name = input("  firstname: ")
         last_name = input("  last_name: ")
