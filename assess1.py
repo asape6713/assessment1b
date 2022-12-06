@@ -18,6 +18,7 @@ def insert_contacts(C, id, first_name, last_name, title, organization):
     cur = C.cursor()
     cur.execute(f"INSERT INTO contacts (id, first_name, last_name, title, organization) VALUES ('{id', '{first_name}', '{last_name}','{title}'.'{organization}');")
     cur.close()
+    #delets contact from table
 def delete_contacts(C, id):
     cur = C.cursor()
     cur.execute(f"DELETE FROM contacts WHERE id = '{ID}';")
