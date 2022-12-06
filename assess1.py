@@ -14,15 +14,15 @@ def read_contacts(C):
     rows = cur.fetchall()
     cur.close()
     return rows
-def insert_contacts(C, word, translation):
+def insert_contacts(C, id, first_name, last_name, title, organization):
     cur = C.cursor()
-    cur.execute(f"INSERT INTO dictionary (word, translation) VALUES ('{word}', '{translation}');")
+    cur.execute(f"INSERT INTO contacts (id, first_name, last_name, title, organization) VALUES ('{id', '{first_name}', '{last_name}','{title}'.'{organization}');")
     cur.close()
-def delete_word(C, ID):
+def delete_contacts(C, id):
     cur = C.cursor()
-    cur.execute(f"DELETE FROM dictionary WHERE id = '{ID}';")
+    cur.execute(f"DELETE FROM contacts WHERE id = '{ID}';")
     cur.close()
-def save_dict(C):
+def save_contacts(C):
     cur = C.cursor()
     cur.execute("COMMIT;")
     cur.close()
@@ -30,14 +30,17 @@ def save_dict(C):
 while True: ## REPL - Read Execute Program Loop
     cmd = input("Command: ")
     if cmd == "list":
-        print(read_dict(conn))
-    elif cmd == "add":
-        name = input("  Word: ")
-        phone = input("  Translation: ")
-        insert_word(conn, name, phone)
+        print(read_contacts(conn))
+    elif cmd == "insert":
+        id = input("  id: ")
+        first_name = input("  firstname: ")
+        last_name = input("  last_name: ")
+        title= input("  title: ")
+        organization = input("  organization: ")
+        insert_contacts(conn, id, first_name, last_name, title, organization)
     elif cmd == "delete":
-        ID = input("  ID: ")
-        delete_word(conn, ID)
+        id= input("  id: ")
+        delete_contacts(conn, ID)
     elif cmd == "quit":
-        save_dict(conn)
+        save_contacts(conn)
         exit()
